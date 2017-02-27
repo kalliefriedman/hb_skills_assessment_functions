@@ -61,6 +61,8 @@ included in the doctest.
 
 
 def is_hometown(town_name):
+    """Takes one string input and returns boolean of True or False depending on if input matches commparison string"""
+
     if town_name.lower() == "santa barbara":
         return True
     else:
@@ -71,6 +73,8 @@ def is_hometown(town_name):
 
 
 def first_and_last(first, last):
+    """Takes two string inputs and combines them to return one string"""
+
     return first + " " + last
 
 #    (c) Write a function that takes a home town, a first name, and a last name
@@ -81,11 +85,13 @@ def first_and_last(first, last):
 
 
 def where_are_you_from(town_name, first, last):
+    """Takes three string inputs and prints a string depending on a conditional statement. Returns nothing."""
+
     full_name = first_and_last(first, last)
     if (is_hometown(town_name)) is True:
         print "Hi %s we're from the same place!" % (full_name)
     else:
-        print "Hi %, where are you from?" % (full_name)
+        print "Hi %s, where are you from?" % (full_name)
 
 
 ###############################################################################
@@ -98,6 +104,8 @@ def where_are_you_from(town_name, first, last):
 
 
 def is_berry(fruit):
+    """Takes one string input and returns a boolean of True or False depending on if variable is within fruit list."""
+
     fruits_list = ['strawberry', 'cherry', 'blackberry']
     if fruit.lower() in fruits_list:
         return True
@@ -111,6 +119,8 @@ def is_berry(fruit):
 #     is_berry() == True, and 5 if is_berry() == False.
 
 def shipping_cost(fruit):
+    """Takes on string input and returns shipping cost"""
+
     if is_berry(fruit) is True:
         return 0
     else:
@@ -122,6 +132,8 @@ def shipping_cost(fruit):
 #    given number, which should be at the end of the new list.
 
 def append_to_list(lst, num):
+    """Takes input of one list and one number and returns a new list combining all values."""
+
     new_lst = lst
     new_lst.append(num)
     return new_lst
@@ -144,7 +156,10 @@ def append_to_list(lst, num):
 #    Your function should return the total cost of the item, including tax and
 #    fees.
 
-def calculate_price(base_price, state_abbrev, tax_percent = .05):
+def calculate_price(base_price, state_abbrev, tax_percent) = .05):
+
+    """Takes input of one price, one string, and one float and returns a float value of total price."""
+    #  Could've put state-specific variables of price, etc. up here so they could be more easily identified and changed.
     total_price = base_price + (base_price * tax_percent)
     if state_abbrev.upper() == "CA":
         total_price = total_price + (total_price * .03)
@@ -172,6 +187,10 @@ def calculate_price(base_price, state_abbrev, tax_percent = .05):
 # isn't something we've discussed yet in class; you might need to google how to
 # write a Python function that takes in an arbitrary number of arguments.
 
+def append_to_list(lst, *args):
+    """Takes in a list and then arbitrary number of arguments, returning the extended list"""
+    lst.extend(args)
+    return lst
 
 # 2. Make a new function with a nested inner function.
 # The outer function will take in a word.
@@ -184,6 +203,17 @@ def calculate_price(base_price, state_abbrev, tax_percent = .05):
 
 #>>> outer("Balloonicorn")
 #('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
+
+def takes_in_word(word):
+    """Takes in a string and calls a function on that string, returning the original string and the result of calling function on string."""
+
+    multiply_by_3_result = multiply_by_3(word)
+    return word, multiply_by_3_result
+
+def multiply_by_3(word):
+    """Takes in a string and returns the result of that word times three."""
+
+    return word * 3
 
 
 ###############################################################################
