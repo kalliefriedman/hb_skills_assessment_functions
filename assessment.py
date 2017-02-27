@@ -59,8 +59,19 @@ included in the doctest.
 #    (a) Write a function that takes a town name as a string and evaluates to
 #        `True` if it is your hometown, and `False` otherwise.
 
+
+def is_hometown(town_name):
+    if town_name.lower() == "santa barbara":
+        return True
+    else:
+        return False
+
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
+
+
+def first_and_last(first, last):
+    return first + " " + last
 
 #    (c) Write a function that takes a home town, a first name, and a last name
 #        as arguments, calls both functions from part (a) and (b) and prints
@@ -68,6 +79,13 @@ included in the doctest.
 #        here', where are you from?" depending on what the function from part
 #        (a) evaluates to.
 
+
+def where_are_you_from(town_name, first, last):
+    full_name = first_and_last(first, last)
+    if (is_hometown(town_name)) is True:
+        print "Hi %s we're from the same place!" % (full_name)
+    else:
+        print "Hi %, where are you from?" % (full_name)
 
 
 ###############################################################################
@@ -80,9 +98,11 @@ included in the doctest.
 
 
 def is_berry(fruit):
-    """Determines if fruit is a berry"""
-
-    pass
+    fruits_list = ['strawberry', 'cherry', 'blackberry']
+    if fruit.lower() in fruits_list:
+        return True
+    else:
+        return False
 
 
 # (b) Write another function, shipping_cost(), which calculates shipping cost
@@ -91,9 +111,10 @@ def is_berry(fruit):
 #     is_berry() == True, and 5 if is_berry() == False.
 
 def shipping_cost(fruit):
-    """Calculates shipping cost of fruit"""
-
-    pass
+    if is_berry(fruit) is True:
+        return 0
+    else:
+        return 5
 
 
 # 2. Make a function that takes in a number and a list of numbers. It should
@@ -101,10 +122,9 @@ def shipping_cost(fruit):
 #    given number, which should be at the end of the new list.
 
 def append_to_list(lst, num):
-    """Creates a new list consisting of the old list with the given number
-       added to the end."""
-
-    pass
+    new_lst = lst
+    new_lst.append(num)
+    return new_lst
 
 
 
@@ -124,9 +144,18 @@ def append_to_list(lst, num):
 #    Your function should return the total cost of the item, including tax and
 #    fees.
 
-def calculate_price(FILL_ME_IN):
-
-    pass
+def calculate_price(base_price, state_abbrev, tax_percent = .05):
+    total_price = base_price + (base_price * tax_percent)
+    if state_abbrev.upper() == "CA":
+        total_price = total_price + (total_price * .03)
+    if state_abbrev.upper() == "PA":
+        total_price = total_price + 2
+    if state_abbrev.upper() == "MA":
+        if base_price < 100:
+            total_price = total_price + 1
+        else:
+            total_price = total_price + 3
+    return total_price
 
 
 ###############################################################################
